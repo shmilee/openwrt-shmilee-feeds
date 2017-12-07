@@ -1,0 +1,23 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+msgid "AutoSSH"
+msgstr ""
+
+msgid "AutoSSH Setting"
+msgstr ""
+
+msgid "Gate Time"
+msgstr ""
+
+msgid "Monitor and Restart ssh sessions"
+msgstr ""
+
+msgid "Monitoring Port"
+msgstr ""
+
+msgid "Poll Time"
+msgstr ""
+
+msgid "SSH Options"
+msgstr ""

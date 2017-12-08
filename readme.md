@@ -89,4 +89,14 @@
       luci-app-vlmcsd/files/luci/controller/vlmcsd.lua
       ```
 
-
+10. tunnel/miredo
+    * 来源 https://github.com/christophgysin/openwrt-packages/tree/master/ipv6/miredo, 版本 `1.2.4`
+    * 版本更新到 `1.2.6`
+    * 修复编译错误
+      ```
+      del PKG_FIXUP:=libtool
+      del CONFIGURE_VARS
+      del MAKE_FLAGS
+      del DEPENDS: +uclibcxx
+      add TARGET_CFLAGS+=-std=gnu99
+      ```

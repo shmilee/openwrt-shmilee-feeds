@@ -73,3 +73,20 @@
           msgstr "打开 AriaNg"
           ```
 
+8. vlmcsd/vlmcsd
+    * 来源 https://github.com/mchome/openwrt-vlmcsd, 版本 `svn1111`
+    * Network -> vlmcsd
+
+9. vlmcsd/luci-app-vlmcsd
+    * 来源 https://github.com/mchome/luci-app-vlmcsd, 版本 `1.0.1`
+    * 去掉依赖 dnsmasq, 防止与 dnsmasq-ful 冲突
+      ```
+      sed -i 's/ +dnsmasq//' luci-app-vlmcsd/Makefile
+      ```
+    * 更改分组 network -> services
+      ```
+      sed -i 's/"network"/"services"/g' \
+      luci-app-vlmcsd/files/luci/controller/vlmcsd.lua
+      ```
+
+

@@ -100,3 +100,19 @@
       del DEPENDS: +uclibcxx
       add TARGET_CFLAGS+=-std=gnu99
       ```
+
+11. shadowsocks/libsodium
+    * 来源 https://github.com/shadowsocks/openwrt-feeds, 版本 `1.0.12`
+    * shadowsocks 的依赖
+
+12. shadowsocks/mbedtls
+    * 来源 https://github.com/shadowsocks/openwrt-feeds, 版本 `2.6.0`
+    * shadowsocks 的依赖
+
+13. shadowsocks/shadowsocks-libev
+    * 来源 https://github.com/shadowsocks/openwrt-shadowsocks, 版本 `3.1.1`
+    * Network -> shadowsocks-libev, shadowsocks-libev-server
+
+14. shadowsocks/luci-app-shadowsocks
+    * 来源 https://github.com/shadowsocks/luci-app-shadowsocks, 版本 `1.8.2`
+

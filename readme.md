@@ -116,3 +116,14 @@
 14. shadowsocks/luci-app-shadowsocks
     * 来源 https://github.com/shadowsocks/luci-app-shadowsocks, 版本 `1.8.2`
 
+15. adbyby/adbyby
+    * 来源 https://github.com/coolsnowwolf/lede/tree/master/package/lean/adbyby, 版本 `2.7-20170823`
+    * svn 对应 github repo 版本 `240`
+    * 删除 files, 修改 Makefile, 用 svn 下载所需 files
+      ```
+      svn checkout -r 240 repo/trunk/dir
+      ./files -> $(PKG_BUILD_DIR)/files
+      ```
+
+16. adbyby/luci-app-adbyby-plus
+    * 来源 https://github.com/coolsnowwolf/lede/tree/master/package/lean/luci-app-adbyby-plus, 版本 `2.0`

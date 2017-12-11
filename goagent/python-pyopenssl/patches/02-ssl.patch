@@ -1,0 +1,11 @@
+--- a/OpenSSL/crypto/crl.c
++++ b/OpenSSL/crypto/crl.c
+@@ -3,6 +3,8 @@
+ #include "crypto.h"
+ 
+ 
++#define X509_REVOKED_dup X509_REVOKED_dup_
++
+ static X509_REVOKED * X509_REVOKED_dup(X509_REVOKED *orig) {
+     X509_REVOKED *dupe = NULL;
+ 

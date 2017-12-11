@@ -127,3 +127,27 @@
 
 16. adbyby/luci-app-adbyby-plus
     * 来源 https://github.com/coolsnowwolf/lede/tree/master/package/lean/luci-app-adbyby-plus, 版本 `2.0`
+
+17. goagent/python-dnslib
+    * goagent 依赖
+
+18. goagent/python-greenlet
+    * goagent 依赖
+
+19. goagent/python-gevent
+    * 来源 https://github.com/hackpascal/packages/tree/master/lang/python-gevent, 版本 `1.0.2`
+    * fix arguments to setup.py; del filespec, install
+    * goagent 依赖
+
+20. goagent/python-pyopenssl
+    * 来源 github.com/openwrt/packages.git, 版本 `0.15`
+    * 降版本到 `0.13`, 不依赖于 `cryptography`, `six`
+    * goagent 依赖
+
+21. goagent/ca-certificates
+    * 来源 https://github.com/openwrt/openwrt/tree/chaos_calmer/package/system/ca-certificates, 版本 `20161130+nmu1`
+    * goagent 依赖 `ca-bundle`
+
+22. goagent/goagent-client
+    * 来源 archlinux, 版本 `3.2.3.20150617`
+    * TODO: files/goagent-client.init

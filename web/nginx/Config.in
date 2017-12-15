@@ -54,7 +54,7 @@ config NGINX_HTTP_SSI
 config NGINX_HTTP_USERID
 	bool
 	prompt "Enable HTTP userid module"
-	default y
+	default n
 
 config NGINX_HTTP_ACCESS
 	bool
@@ -74,7 +74,7 @@ config NGINX_HTTP_AUTH_REQUEST
 config NGINX_HTTP_AUTOINDEX
 	bool
 	prompt "Enable HTTP autoindex module"
-	default n
+	default y
 
 config NGINX_HTTP_GEO
 	bool
@@ -89,7 +89,7 @@ config NGINX_HTTP_MAP
 config NGINX_HTTP_SPLIT_CLIENTS
 	bool
 	prompt "Enable HTTP split clients"
-	default y
+	default n
 
 config NGINX_HTTP_REFERER
 	bool
@@ -140,7 +140,7 @@ config NGINX_HTTP_LIMIT_REQ
 config NGINX_HTTP_EMPTY_GIF
 	bool
 	prompt "Enable HTTP empty gif"
-	default y
+	default n
 
 config NGINX_HTTP_BROWSER
 	bool

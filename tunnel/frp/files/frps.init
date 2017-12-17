@@ -1,0 +1,20 @@
+#!/bin/sh /etc/rc.common
+# Copyright (c) 2011-2017 OpenWrt.org
+
+START=90
+
+start(){
+    [ -d /var/log/frp ] || mkdir -p /var/log/frp
+    SERVICE_DAEMONIZE=1 \
+        service_start /usr/bin/frps -c /etc/frp/frps.ini \
+            -L /var/log/frp/frps.log --log-level=info
+    [ -z "$(pgrep /usr/bin/frps)" ] && echo "frps starts failed!"
+}
+
+stop(){
+	if [ -z "$(pgrep /usr/bin/frps)" ]; then
+		echo "frps is not running."
+	else
+        service_stop /usr/bin/frps
+	fi
+}

@@ -156,3 +156,6 @@
 23. tunnel/frp
     * frp 主页: https://github.com/fatedier/frp
     * `frpc`, `frps`
+
+24. fs/luci-app-nfs
+    * 来源 https://github.com/openwrt-1983/2015/trunk/luci-app-nfs, 版本 `1.0`

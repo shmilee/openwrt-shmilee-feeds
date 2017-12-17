@@ -46,6 +46,8 @@ define Package/$(PKG_NAME)/install
 	$(LN) /etc/goagent.user.ini $(1)/usr/share/$(PKG_NAME)/goagent.user.ini
 	$(INSTALL_DIR) $(1)/etc
 	$(INSTALL_DATA) ./files/goagent.user.ini  $(1)/etc/
+	$(INSTALL_DIR) $(1)/etc/init.d
+	$(INSTALL_BIN) ./files/goagent-client.init $(1)/etc/init.d/goagent-client
 endef
 
 $(eval $(call BuildPackage,goagent-client))

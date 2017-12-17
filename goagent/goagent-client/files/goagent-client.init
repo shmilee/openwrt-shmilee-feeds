@@ -1,1 +1,18 @@
-TODO
+#!/bin/sh /etc/rc.common
+# Copyright (c) 2011-2017 OpenWrt.org
+
+START=90
+GOAGENT=/usr/share/goagent-client/goagent
+
+start(){
+    SERVICE_DAEMONIZE=1 service_start $GOAGENT
+    [ -z "$(pgrep $GOAGENT)" ] && echo "goagent-client starts failed!"
+}
+
+stop(){
+	if [ -z "$(pgrep $GOAGENT)" ]; then
+		echo "goagent-client is not running."
+	else
+        service_stop $GOAGENT
+    fi
+}

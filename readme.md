@@ -151,7 +151,7 @@
 
 22. goagent/goagent-client
     * 来源 archlinux, 版本 `3.2.3.20150617`
-    * TODO: files/goagent-client.init
+    * TODO: 测试 ipv6
 
 23. tunnel/frp
     * frp 主页: https://github.com/fatedier/frp

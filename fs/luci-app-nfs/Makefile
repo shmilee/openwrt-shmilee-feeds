@@ -14,7 +14,7 @@ PKG_VERSION:=1.0.0
 
 # Release == build
 # increase on changes of translation files
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 PKG_MAINTAINER:=shmilee
 

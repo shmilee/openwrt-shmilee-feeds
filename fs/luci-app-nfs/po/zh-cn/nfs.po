@@ -17,43 +17,43 @@ msgid "NFS"
 msgstr "NFS"
 
 msgid "Shared Directories"
-msgstr "¹²ÏíÄ¿Â¼"
+msgstr "å…±äº«ç›®å½•"
 
 msgid "Enable"
-msgstr "ÆôÓÃ"
+msgstr "å¯ç”¨"
 
 msgid "Path"
-msgstr "Â·¾¶"
+msgstr "è·¯å¾„"
 
 msgid "Clients"
-msgstr "ÔÊĞíµÄ¿Í»§¶Ë"
+msgstr "å…è®¸çš„å®¢æˆ·ç«¯"
 
 msgid "Permission"
-msgstr "·ÃÎÊÈ¨ÏŞ"
+msgstr "è®¿é—®æƒé™"
 
 msgid "anonymous"
-msgstr "ÄäÃû·ÃÎÊ"
+msgstr "åŒ¿åè®¿é—®"
 
 msgid "root"
 msgstr "root"
 
 msgid "full"
-msgstr "È«²¿È¨ÏŞ"
+msgstr "å…¨éƒ¨æƒé™"
 
 msgid "Read-only"
-msgstr "Ö»¶Á"
+msgstr "åªè¯»"
 
 msgid "Insecure"
-msgstr "½ûÓÃ°²È«ĞÔ"
+msgstr "ç¦ç”¨å®‰å…¨æ€§"
 
 msgid "Allow external network access"
-msgstr "ÔÊĞíÍâ²¿ÍøÂç·ÃÎÊ"
+msgstr "å…è®¸å¤–éƒ¨ç½‘ç»œè®¿é—®"
 
 msgid "Mounted Points"
-msgstr "ÒÑ¹ÒÔØµ½±¾µØµÄNFS"
+msgstr "å·²æŒ‚è½½åˆ°æœ¬åœ°çš„NFS"
 
 msgid "Host"
-msgstr "Ö÷»ú"
+msgstr "ä¸»æœº"
 
 msgid "Mount On"
-msgstr "¹ÒÔØµ½"
+msgstr "æŒ‚è½½åˆ°"

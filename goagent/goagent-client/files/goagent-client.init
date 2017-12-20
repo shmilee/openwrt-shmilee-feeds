@@ -2,17 +2,26 @@
 # Copyright (c) 2011-2017 OpenWrt.org
 
 START=90
-GOAGENT=/usr/share/goagent-client/goagent
+PIDFILE=/var/run/goagent.pid
 
 start(){
-    SERVICE_DAEMONIZE=1 service_start $GOAGENT
-    [ -z "$(pgrep $GOAGENT)" ] && echo "goagent-client starts failed!"
+    if [ -f $PIDFILE ]; then
+        echo "goagent-client has already started."
+    else
+        start-stop-daemon -Sbm -c nobody -x /usr/bin/goagent-wrapper -p $PIDFILE
+    fi
 }
 
 stop(){
-	if [ -z "$(pgrep $GOAGENT)" ]; then
-		echo "goagent-client is not running."
-	else
-        service_stop $GOAGENT
+    if [ -f $PIDFILE ]; then
+        RUN_DIR=`sed 's/python2//;s/goagent$//' /proc/$(cat $PIDFILE)/cmdline` 2>/dev/null
+        start-stop-daemon -Kq -p $PIDFILE
+        rm -f $PIDFILE
+        if [ ! -z "$RUN_DIR" ]; then
+            rm -rf "$RUN_DIR"/certs "$RUN_DIR"/CA.crt "$RUN_DIR"/goagent* "$RUN_DIR"/*proxy*
+            gzip "$RUN_DIR"/*.log 2>/dev/null
+        fi
+    else
+        echo "goagent-client is not running."
     fi
 }

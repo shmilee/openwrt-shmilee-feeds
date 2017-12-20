@@ -43,9 +43,10 @@ define Package/$(PKG_NAME)/install
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/proxylib.py $(1)/usr/share/$(PKG_NAME)/
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/proxy.pac $(1)/usr/share/$(PKG_NAME)/
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/goagent.ini $(1)/usr/share/$(PKG_NAME)/
-	$(LN) /etc/goagent.user.ini $(1)/usr/share/$(PKG_NAME)/goagent.user.ini
-	$(INSTALL_DIR) $(1)/etc
-	$(INSTALL_DATA) ./files/goagent.user.ini  $(1)/etc/
+	$(INSTALL_DIR) $(1)/etc/$(PKG_NAME)
+	$(INSTALL_DATA) ./files/goagent.user.ini  $(1)/etc/$(PKG_NAME)/
+	$(INSTALL_DIR) $(1)/usr/bin/
+	$(INSTALL_BIN) ./files/goagent_wrapper.sh $(1)/usr/bin/goagent-wrapper
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) ./files/goagent-client.init $(1)/etc/init.d/goagent-client
 endef

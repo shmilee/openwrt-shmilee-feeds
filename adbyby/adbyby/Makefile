@@ -1,6 +1,6 @@
 #
 # Copyright (C) 2015-2016 OpenWrt.org
-# Copyright (C) 2017 shmilee
+# Copyright (C) 2017-2018 shmilee
 # 
 # This is free software, licensed under the GNU General Public License v3.
 #
@@ -9,11 +9,11 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=adbyby
 PKG_VERSION:=2.7
-PKG_RELEASE:=20170823
+PKG_RELEASE:=20180616
 
 PKG_SOURCE_PROTO:=svn
 PKG_SOURCE_URL:=https://github.com/coolsnowwolf/lede/trunk/package/lean/adbyby
-PKG_SOURCE_VERSION:=240
+PKG_SOURCE_VERSION:=584
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_RELEASE)-r$(PKG_SOURCE_VERSION)
 PKG_SOURCE:=$(PKG_SOURCE_SUBDIR).tar.gz
 PKG_MIRROR_HASH:=dc8e78f6c56feb10cc3fbaecbd7b55bf79d12d3ff5acf7a129589bcf4e4f362f

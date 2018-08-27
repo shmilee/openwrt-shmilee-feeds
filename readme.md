@@ -14,11 +14,23 @@
 
 # 已包含软件包
 
-2. autossh/luci-app-autossh
+1. adbyby/adbyby
+    * 来源 https://github.com/coolsnowwolf/lede/tree/master/package/lean/adbyby, 版本 `2.7-20180616`
+    * svn 对应 github repo 版本 `584`
+    * 删除 files, 修改 Makefile, 用 svn 下载所需 files
+      ```
+      svn checkout -r 584 repo/trunk/dir
+      ./files -> $(PKG_BUILD_DIR)/files
+      ```
+
+2. adbyby/luci-app-adbyby-plus
+    * 来源 https://github.com/coolsnowwolf/lede/tree/master/package/lean/luci-app-adbyby-plus, 版本 `2.0-29`
+
+12. autossh/luci-app-autossh
     * autossh luci 界面
     * 翻译: en, zh-cn
 
-3. web/nginx
+13. web/nginx
     * 来源 github.com/openwrt/packages.git;for-15.05, 版本 `1.12.1`
     * 更新到 [nginx](http://nginx.org/en/download.html) `1.12.2`
     * 考虑到路由器的性能, nginx 只作前端, 将不同请求反向代理到其他机器.
@@ -26,7 +38,7 @@
       如 auth, ssi, fastcgi, uwsgi, scgi, memcached, lua, NAXSI 等.
     * 保留 `autoindex`, 用于分享数据.
 
-7. aria2/luci-app-aria2
+17. aria2/luci-app-aria2
     * 来源 github.com/openwrt/luci.git, 版本 `1.0.1`
     * Makefile 中修复路径 `../../luci.mk` -> `$(TOPDIR)/feeds/luci/luci.mk`
     * 添加 AriaNg 支持
@@ -54,11 +66,11 @@
           msgstr "打开 AriaNg"
           ```
 
-8. vlmcsd/vlmcsd
+18. vlmcsd/vlmcsd
     * 来源 https://github.com/mchome/openwrt-vlmcsd, 版本 `svn1111`
     * Network -> vlmcsd
 
-9. vlmcsd/luci-app-vlmcsd
+19. vlmcsd/luci-app-vlmcsd
     * 来源 https://github.com/mchome/luci-app-vlmcsd, 版本 `1.0.1`
     * 去掉依赖 dnsmasq, 防止与 dnsmasq-ful 冲突
       ```
@@ -81,18 +93,6 @@
       del DEPENDS: +uclibcxx
       add TARGET_CFLAGS+=-std=gnu99
       ```
-
-15. adbyby/adbyby
-    * 来源 https://github.com/coolsnowwolf/lede/tree/master/package/lean/adbyby, 版本 `2.7-20170823`
-    * svn 对应 github repo 版本 `240`
-    * 删除 files, 修改 Makefile, 用 svn 下载所需 files
-      ```
-      svn checkout -r 240 repo/trunk/dir
-      ./files -> $(PKG_BUILD_DIR)/files
-      ```
-
-16. adbyby/luci-app-adbyby-plus
-    * 来源 https://github.com/coolsnowwolf/lede/tree/master/package/lean/luci-app-adbyby-plus, 版本 `2.0`
 
 17. goagent/python-dnslib
     * goagent 依赖

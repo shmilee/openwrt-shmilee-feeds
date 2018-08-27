@@ -54,24 +54,23 @@
           msgstr "打开 AriaNg"
           ```
 
-12. autossh/luci-app-autossh
+4. autossh/luci-app-autossh
     * autossh luci 界面
     * 翻译: en, zh-cn
 
-13. web/nginx
-    * 来源 github.com/openwrt/packages.git;for-15.05, 版本 `1.12.1`
-    * 更新到 [nginx](http://nginx.org/en/download.html) `1.12.2`
-    * 考虑到路由器的性能, nginx 只作前端, 将不同请求反向代理到其他机器.
-      因此, 开启 `TLS SNI`, 保留 `proxy` 的同时, 尽量去除其他的 module,
-      如 auth, ssi, fastcgi, uwsgi, scgi, memcached, lua, NAXSI 等.
-    * 保留 `autoindex`, 用于分享数据.
+5. fs/luci-app-nfs
+    * 来源 https://github.com/openwrt-1983/2015/trunk/luci-app-nfs, 版本 `1.0`
 
+6. tunnel/frp
+    * frp 主页: https://github.com/fatedier/frp
+    * `frpc`, `frps`
+    * `make package/frp/check FIXUP=1 V=s`
 
-18. vlmcsd/vlmcsd
+7. vlmcsd/vlmcsd
     * 来源 https://github.com/mchome/openwrt-vlmcsd, 版本 `svn1111`
     * Network -> vlmcsd
 
-19. vlmcsd/luci-app-vlmcsd
+8. vlmcsd/luci-app-vlmcsd
     * 来源 https://github.com/mchome/luci-app-vlmcsd, 版本 `1.0.1`
     * 去掉依赖 dnsmasq, 防止与 dnsmasq-ful 冲突
       ```
@@ -83,35 +82,9 @@
       luci-app-vlmcsd/files/luci/controller/vlmcsd.lua
       ```
 
-10. tunnel/miredo
-    * 来源 https://github.com/christophgysin/openwrt-packages/tree/master/ipv6/miredo, 版本 `1.2.4`
-    * 版本更新到 `1.2.6`
-    * 修复编译错误
-      ```
-      del PKG_FIXUP:=libtool
-      del CONFIGURE_VARS
-      del MAKE_FLAGS
-      del DEPENDS: +uclibcxx
-      add TARGET_CFLAGS+=-std=gnu99
-      ```
-
-17. goagent/python-dnslib
-    * goagent 依赖
-
-18. goagent/python-greenlet
-    * goagent 依赖
-
-19. goagent/python-gevent
-    * 来源 https://github.com/hackpascal/packages/tree/master/lang/python-gevent, 版本 `1.0.2`
-    * fix arguments to setup.py; del filespec, install
-    * goagent 依赖
-
-22. goagent/goagent-client
-    * 来源 archlinux, 版本 `3.2.3.20150617`
-
-23. tunnel/frp
-    * frp 主页: https://github.com/fatedier/frp
-    * `frpc`, `frps`
-
-24. fs/luci-app-nfs
-    * 来源 https://github.com/openwrt-1983/2015/trunk/luci-app-nfs, 版本 `1.0`
+9. web/nginx
+    * 来源 github.com/openwrt/packages.git, 版本 `1.12.2`
+    * 考虑到路由器的性能, nginx 只作前端, 将不同请求反向代理到其他机器.
+      因此, 开启 `TLS SNI`, 保留 `proxy` 的同时, 尽量去除其他的 module,
+      如 auth, ssi, fastcgi, uwsgi, scgi, memcached, lua, NAXSI 等.
+    * 保留 `autoindex`, 用于分享数据.

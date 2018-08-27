@@ -64,7 +64,7 @@ config NGINX_HTTP_ACCESS
 config NGINX_HTTP_AUTH_BASIC
 	bool
 	prompt "Enable HTTP auth basic"
-	default n
+	default y
 
 config NGINX_HTTP_AUTH_REQUEST
 	bool

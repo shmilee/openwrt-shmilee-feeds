@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=frp
-PKG_VERSION:=0.14.1
+PKG_VERSION:=0.21.0
 PKG_RELEASE:=1
 
 ifneq (,$(findstring $(ARCH), arm mips mips64))
@@ -23,7 +23,7 @@ else ifeq ($(ARCH),mips64el)
   PKG_SOURCE_ARCH:=mips64le
 endif
 PKG_SOURCE:=$(PKG_NAME)_$(PKG_VERSION)_linux_$(PKG_SOURCE_ARCH).tar.gz
-PKG_HASH:=
+PKG_HASH:=64ece5a1385b58d4765f1cceff3f65c41ef0afd7e3a08981f07c178b6920455d
 PKG_SOURCE_URL:=https://github.com/fatedier/frp/releases/download/v$(PKG_VERSION)
 PKG_MAINTAINER:=shmilee <shmilee.zju@gmail.com>
 PKG_LICENSE:=Apache-2.0

@@ -1,23 +1,18 @@
 # OpenWrt shmilee's feeds
 
 * 添加官方源中缺少的包,
-  主要针对版本 Chaos Calmer 15.05.1, 架构 ar71xx, 其他未测试
+  主要针对版本 openwrt 18.06, 架构 ar71xx, 其他未测试
 * 修改官方源中的部分包, 删减或增加功能, 具体情况看以下每个软件包的介绍
 * 需确保 `SDK/feeds.conf.default` 中包含 `base`, `packages`, `luci`,
   以避免依赖或文件缺失. 比如,
   ```
-  src-git base https://git.openwrt.org/15.05/openwrt.git
-  src-git packages https://github.com/openwrt/packages.git;for-15.05
-  src-git luci https://github.com/openwrt/luci.git;for-15.05
-  src-git shmilee https://github.com/shmilee/openwrt-shmilee-feeds.git;for-15.05
+  src-git base https://git.openwrt.org/openwrt/openwrt.git;v18.06.1
+  src-git packages https://github.com/openwrt/packages.git;openwrt-18.06
+  src-git luci https://github.com/openwrt/luci.git;openwrt-18.06
+  src-git shmilee https://github.com/shmilee/openwrt-shmilee-feeds.git
   ```
 
 # 已包含软件包
-
-1. autossh/autossh
-    * 来源 github.com/openwrt/packages.git, 版本 `1.4e-1`
-    * 可灵活的使用 ssh 的端口转发(-L, -R, -D)
-    * Network -> SSH -> autossh
 
 2. autossh/luci-app-autossh
     * autossh luci 界面
@@ -30,21 +25,6 @@
       因此, 开启 `TLS SNI`, 保留 `proxy` 的同时, 尽量去除其他的 module,
       如 auth, ssi, fastcgi, uwsgi, scgi, memcached, lua, NAXSI 等.
     * 保留 `autoindex`, 用于分享数据.
-
-4. aria2/aria2
-    * 来源 github.com/openwrt/packages.git, 版本 `1.33.0`
-
-5. aria2/yaaw
-    * 来源 github.com/openwrt/packages.git, 版本 `2017-04-11`
-    * Makefile 中添加缺少变量
-      ```
-      PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-      PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
-      ```
-
-6. aria2/ariang
-    * AriaNg 主页: https://github.com/mayswind/AriaNg, 版本 `0.3.0`
-    * 配合 luci-app-aria2 使用
 
 7. aria2/luci-app-aria2
     * 来源 github.com/openwrt/luci.git, 版本 `1.0.1`
@@ -102,21 +82,6 @@
       add TARGET_CFLAGS+=-std=gnu99
       ```
 
-11. shadowsocks/libsodium
-    * 来源 https://github.com/shadowsocks/openwrt-feeds, 版本 `1.0.12`
-    * shadowsocks 的依赖
-
-12. shadowsocks/mbedtls
-    * 来源 https://github.com/shadowsocks/openwrt-feeds, 版本 `2.6.0`
-    * shadowsocks 的依赖
-
-13. shadowsocks/shadowsocks-libev
-    * 来源 https://github.com/shadowsocks/openwrt-shadowsocks, 版本 `3.1.1`
-    * Network -> shadowsocks-libev, shadowsocks-libev-server
-
-14. shadowsocks/luci-app-shadowsocks
-    * 来源 https://github.com/shadowsocks/luci-app-shadowsocks, 版本 `1.8.2`
-
 15. adbyby/adbyby
     * 来源 https://github.com/coolsnowwolf/lede/tree/master/package/lean/adbyby, 版本 `2.7-20170823`
     * svn 对应 github repo 版本 `240`
@@ -139,15 +104,6 @@
     * 来源 https://github.com/hackpascal/packages/tree/master/lang/python-gevent, 版本 `1.0.2`
     * fix arguments to setup.py; del filespec, install
     * goagent 依赖
-
-20. goagent/python-pyopenssl
-    * 来源 github.com/openwrt/packages.git, 版本 `0.15`
-    * 降版本到 `0.13`, 不依赖于 `cryptography`, `six`
-    * goagent 依赖
-
-21. goagent/ca-certificates
-    * 来源 https://github.com/openwrt/openwrt/tree/chaos_calmer/package/system/ca-certificates, 版本 `20161130+nmu1`
-    * goagent 依赖 `ca-bundle`
 
 22. goagent/goagent-client
     * 来源 archlinux, 版本 `3.2.3.20150617`

@@ -26,20 +26,8 @@
 2. adbyby/luci-app-adbyby-plus
     * 来源 https://github.com/coolsnowwolf/lede/tree/master/package/lean/luci-app-adbyby-plus, 版本 `2.0-29`
 
-12. autossh/luci-app-autossh
-    * autossh luci 界面
-    * 翻译: en, zh-cn
-
-13. web/nginx
-    * 来源 github.com/openwrt/packages.git;for-15.05, 版本 `1.12.1`
-    * 更新到 [nginx](http://nginx.org/en/download.html) `1.12.2`
-    * 考虑到路由器的性能, nginx 只作前端, 将不同请求反向代理到其他机器.
-      因此, 开启 `TLS SNI`, 保留 `proxy` 的同时, 尽量去除其他的 module,
-      如 auth, ssi, fastcgi, uwsgi, scgi, memcached, lua, NAXSI 等.
-    * 保留 `autoindex`, 用于分享数据.
-
-17. aria2/luci-app-aria2
-    * 来源 github.com/openwrt/luci.git, 版本 `1.0.1`
+3. aria2/luci-app-aria2
+    * 来源 github.com/openwrt/luci.git, 版本 `1.0.1-2`
     * Makefile 中修复路径 `../../luci.mk` -> `$(TOPDIR)/feeds/luci/luci.mk`
     * 添加 AriaNg 支持
         - `luasrc/controller/aria2.lua`
@@ -65,6 +53,19 @@
           msgid "Open AriaNg"
           msgstr "打开 AriaNg"
           ```
+
+12. autossh/luci-app-autossh
+    * autossh luci 界面
+    * 翻译: en, zh-cn
+
+13. web/nginx
+    * 来源 github.com/openwrt/packages.git;for-15.05, 版本 `1.12.1`
+    * 更新到 [nginx](http://nginx.org/en/download.html) `1.12.2`
+    * 考虑到路由器的性能, nginx 只作前端, 将不同请求反向代理到其他机器.
+      因此, 开启 `TLS SNI`, 保留 `proxy` 的同时, 尽量去除其他的 module,
+      如 auth, ssi, fastcgi, uwsgi, scgi, memcached, lua, NAXSI 等.
+    * 保留 `autoindex`, 用于分享数据.
+
 
 18. vlmcsd/vlmcsd
     * 来源 https://github.com/mchome/openwrt-vlmcsd, 版本 `svn1111`

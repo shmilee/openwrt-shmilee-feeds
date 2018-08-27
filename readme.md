@@ -9,7 +9,7 @@
   src-git base https://git.openwrt.org/15.05/openwrt.git
   src-git packages https://github.com/openwrt/packages.git;for-15.05
   src-git luci https://github.com/openwrt/luci.git;for-15.05
-  src-git shmilee https://github.com/shmilee/openwrt-shmilee-feeds.git
+  src-git shmilee https://github.com/shmilee/openwrt-shmilee-feeds.git;for-15.05
   ```
 
 # 已包含软件包

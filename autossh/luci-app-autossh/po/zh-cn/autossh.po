@@ -15,6 +15,9 @@ msgstr "AutoSSH"
 msgid "AutoSSH Setting"
 msgstr "AutoSSH 配置"
 
+msgid "Enable"
+msgstr "开启"
+
 msgid "Gate Time"
 msgstr "选通时间"
 

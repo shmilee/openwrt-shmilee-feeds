@@ -7,6 +7,9 @@ msgstr ""
 msgid "AutoSSH Setting"
 msgstr ""
 
+msgid "Enable"
+msgstr ""
+
 msgid "Gate Time"
 msgstr ""
 

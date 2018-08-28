@@ -9,6 +9,9 @@ s = m:section(TypedSection, "autossh", translate("AutoSSH Setting"))
 s.anonymous   = true
 s.addremove   = true
 
+o = s:option(Flag, "enabled", translate("Enable"))
+o.rmempty = false
+
 o = s:option(Value, "ssh", translate("SSH Options"))
 o.rmempty     = false
 

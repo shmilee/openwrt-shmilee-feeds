@@ -61,6 +61,10 @@
 5. fs/luci-app-nfs
     * 来源 https://github.com/openwrt-1983/2015/trunk/luci-app-nfs, 版本 `1.0`
 
+6. ipv6/radvd
+    * 来源 https://github.com/openwrt/packages/pull/1458, 版本 `1.15`
+    * See also: [Setting up an ISATAP router on Linux](http://www.saschahlusiak.de/linux/isatap.htm#router)
+
 6. tunnel/frp
     * frp 主页: https://github.com/fatedier/frp
     * `frpc`, `frps`

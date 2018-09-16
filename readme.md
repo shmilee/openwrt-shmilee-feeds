@@ -62,7 +62,8 @@
     * 来源 https://github.com/openwrt-1983/2015/trunk/luci-app-nfs, 版本 `1.0`
 
 6. ipv6/radvd
-    * 来源 https://github.com/openwrt/packages/pull/1458, 版本 `1.15`
+    * 来源 https://github.com/openwrt/packages/pull/1458, 更新到版本 `2.17`
+    * rm patches, rm DEPEND kmod-ipv6, add `-std=gnu99`
     * See also: [Setting up an ISATAP router on Linux](http://www.saschahlusiak.de/linux/isatap.htm#router)
 
 6. tunnel/frp

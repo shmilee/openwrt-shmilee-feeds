@@ -8,13 +8,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=radvd
-PKG_VERSION:=1.15
+PKG_VERSION:=2.17
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=http://v6web.litech.org/radvd/dist \
 		http://download.sourcemage.org/mirror
-PKG_MD5SUM:=97cd606000b8dd929b5f5449d5e7cea2
+PKG_HASH:=53757e7f2164899e1145482f1ae91829600a6e2f6fec29cfb3b350a3bb45bd5d
 PKG_MAINTAINER:=QshenX <q@xd8.cn>
 PKG_LICENSE:=GPL-2.0
 
@@ -27,7 +27,7 @@ define Package/radvd/Default
   CATEGORY:=Network
   TITLE:=IPv6 Routing Advertisement
   URL:=http://v6web.litech.org/radvd/
-  DEPENDS:=+kmod-ipv6 +libdaemon
+  DEPENDS:=+libdaemon
 endef
 
 define Package/radvd
@@ -58,6 +58,9 @@ CONFIGURE_ARGS += \
 	--with-configfile=/etc/radvd.conf \
 	--with-logfile=/var/log/radvd.log \
 	--with-pidfile=/var/run/radvd.pid
+
+TARGET_CFLAGS += \
+	-std=gnu99
 
 define Package/radvd/conffiles
 /etc/config/radvd

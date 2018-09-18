@@ -182,6 +182,16 @@ config NGINX_PCRE
 	prompt "Enable PCRE library usage"
 	default y
 
+config NGINX_HTTP_SUBSTITUTIONS_FILTER
+	bool
+	prompt "Enable substitutions filter module"
+	default y
+
+config NGINX_HTTP_GOOGLE_FILTER
+	bool
+	prompt "Enable google filter(mirror) module"
+	default y
+
 config NGINX_NAXSI
 	bool
 	prompt "Enable NAXSI module"

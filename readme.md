@@ -93,3 +93,4 @@
       因此, 开启 `TLS SNI`, 保留 `proxy` 的同时, 尽量去除其他的 module,
       如 auth, ssi, fastcgi, uwsgi, scgi, memcached, lua, NAXSI 等.
     * 保留 `autoindex`, 用于分享数据.
+    * 添加 substitutions && google filter

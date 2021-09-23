@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=frp
-PKG_VERSION:=0.21.0
+PKG_VERSION:=0.37.1
 PKG_RELEASE:=1
 
 ifneq (,$(findstring $(ARCH), arm mips mips64))
@@ -33,73 +33,58 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)_$(PKG_VERSION)_linux_$(PKG_SOURCE_ARCH)
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/frp/Default
+define Package/frp/template
   SECTION:=net
   CATEGORY:=Network
   SUBMENU:=Web Servers/Proxies
-  TITLE:=A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet
+  TITLE:=frp - fast reverse proxy
   URL:=https://github.com/fatedier/frp
   DEPENDS:=
 endef
 
-define Package/frp/Default/description
-frp is a fast reverse proxy to help you expose a local server behind a NAT
-or firewall to the internet. Now, it supports tcp, udp, http and https
-protocol when requests can be forwarded by domains to backward web services.
-endef
-
-define Build/Configure
-endef
-
-define Build/Compile
-endef
-
 define Package/frpc
-$(call Package/frp/Default)
+  $(call Package/frp/template)
   TITLE+= (client)
 endef
 
-define Package/frpc/description
-$(call Package/frp/Default/description)
-This package contains the frp client.
-endef
-
-define Package/frpc/conffiles
-/etc/frp/frpc.ini
-endef
-
-define Package/frpc/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/frpc $(1)/usr/bin/
-	$(INSTALL_DIR) $(1)/etc/frp
-	$(INSTALL_DATA) $(PKG_BUILD_DIR)/frpc.ini $(1)/etc/frp/
-	$(INSTALL_DATA) $(PKG_BUILD_DIR)/frpc_full.ini $(1)/etc/frp/
-	$(INSTALL_DIR) $(1)/etc/init.d
-	$(INSTALL_BIN) ./files/frpc.init $(1)/etc/init.d/frpc
-endef
-
 define Package/frps
-$(call Package/frp/Default)
+  $(call Package/frp/template)
   TITLE+= (server)
 endef
 
-define Package/frps/description
-$(call Package/frp/Default/description)
-This package contains the frp server.
+define Package/frp/description
+  frp is a fast reverse proxy to help you expose a local server behind
+  a NAT or firewall to the internet.
+endef
+Package/frpc/description = $(Package/frp/description)
+Package/frps/description = $(Package/frp/description)
+
+define Package/frp/install
+	$(INSTALL_DIR) $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/$(2) $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/etc/frp/$(2).d/
+	$(INSTALL_DATA) $(PKG_BUILD_DIR)/$(2).ini $(1)/etc/frp/$(2).d/
+	$(INSTALL_DATA) $(PKG_BUILD_DIR)/$(2)_full.ini $(1)/etc/frp/$(2).d/
+	$(INSTALL_DIR) $(1)/etc/config/
+	$(INSTALL_CONF) ./files/$(2).config $(1)/etc/config/$(2)
+	$(INSTALL_DIR) $(1)/etc/init.d/
+	$(INSTALL_BIN) ./files/$(2).init $(1)/etc/init.d/$(2)
+endef
+
+define Package/frpc/conffiles
+/etc/config/frpc
 endef
 
 define Package/frps/conffiles
-/etc/frp/frps.ini
+/etc/config/frps
+endef
+
+define Package/frpc/install
+  $(call Package/frp/install,$(1),frpc)
 endef
 
 define Package/frps/install
-	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/frps $(1)/usr/bin/
-	$(INSTALL_DIR) $(1)/etc/frp
-	$(INSTALL_DATA) $(PKG_BUILD_DIR)/frps.ini $(1)/etc/frp/
-	$(INSTALL_DATA) $(PKG_BUILD_DIR)/frps_full.ini $(1)/etc/frp/
-	$(INSTALL_DIR) $(1)/etc/init.d
-	$(INSTALL_BIN) ./files/frps.init $(1)/etc/init.d/frps
+  $(call Package/frp/install,$(1),frps)
 endef
 
 $(eval $(call BuildPackage,frpc))

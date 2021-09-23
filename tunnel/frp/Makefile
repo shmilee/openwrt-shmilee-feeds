@@ -23,7 +23,7 @@ else ifeq ($(ARCH),mips64el)
   PKG_SOURCE_ARCH:=mips64le
 endif
 PKG_SOURCE:=$(PKG_NAME)_$(PKG_VERSION)_linux_$(PKG_SOURCE_ARCH).tar.gz
-PKG_HASH:=64ece5a1385b58d4765f1cceff3f65c41ef0afd7e3a08981f07c178b6920455d
+PKG_HASH:=5ad100e07c3daf5a0d24f09363047b425ef8ff08ced4fff781167888e965e4f8
 PKG_SOURCE_URL:=https://github.com/fatedier/frp/releases/download/v$(PKG_VERSION)
 PKG_MAINTAINER:=shmilee <shmilee.zju@gmail.com>
 PKG_LICENSE:=Apache-2.0

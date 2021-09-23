@@ -1,86 +1,54 @@
 # OpenWrt shmilee's feeds
 
 * 添加官方源中缺少的包,
-  主要针对版本 openwrt 18.06, 架构 ar71xx, 其他未测试
+  主要针对版本 openwrt 19.07, 架构 ar71xx, 其他未测试
 * 修改官方源中的部分包, 删减或增加功能, 具体情况看以下每个软件包的介绍
 * 需确保 `SDK/feeds.conf.default` 中包含 `base`, `packages`, `luci`,
   以避免依赖或文件缺失. 比如,
   ```
-  src-git base https://git.openwrt.org/openwrt/openwrt.git;v18.06.1
-  src-git packages https://github.com/openwrt/packages.git;openwrt-18.06
-  src-git luci https://github.com/openwrt/luci.git;openwrt-18.06
-  src-git shmilee https://github.com/shmilee/openwrt-shmilee-feeds.git;for-18.06
+  src-git base https://git.openwrt.org/openwrt/openwrt.git;v19.07.8
+  src-git packages https://git.openwrt.org/feed/packages.git^c6ae1c6a0fced32c171e228e3425a9b655585011
+  src-git luci https://git.openwrt.org/project/luci.git^7b931da4779c68f5aef5908286c2ae5283d2dece
+  src-git shmilee https://github.com/shmilee/openwrt-shmilee-feeds.git
   ```
 
 # 已包含软件包
 
 1. adbyby/adbyby
-    * 来源 https://github.com/coolsnowwolf/lede/tree/master/package/lean/adbyby, 版本 `2.7-20180616`
-    * svn 对应 github repo 版本 `584`
+    * 来源 https://github.com/coolsnowwolf/lede/tree/master/package/lean/adbyby, 版本 `2.7-20200315`
+    * svn 对应 github repo 版本 `3000`
     * 删除 files, 修改 Makefile, 用 svn 下载所需 files
       ```
-      svn checkout -r 584 repo/trunk/dir
+      svn checkout -r 3000 repo/trunk/dir
       ./files -> $(PKG_BUILD_DIR)/files
       ```
 
 2. adbyby/luci-app-adbyby-plus
-    * 来源 https://github.com/coolsnowwolf/lede/tree/master/package/lean/luci-app-adbyby-plus, 版本 `2.0-29`
+    * 来源 https://github.com/coolsnowwolf/lede/tree/master/package/lean/luci-app-adbyby-plus, 版本 `2.0-75`
 
-3. aria2/luci-app-aria2
-    * 来源 github.com/openwrt/luci.git, 版本 `1.0.1-2`
-    * Makefile 中修复路径 `../../luci.mk` -> `$(TOPDIR)/feeds/luci/luci.mk`
-    * 添加 AriaNg 支持
-        - `luasrc/controller/aria2.lua`
-          ```
-  	      local status = {
-	  	    running = (sys.call("pidof aria2c > /dev/null") == 0),
-	  	    yaaw = ipkg.installed("yaaw"),
-	  	    webui = ipkg.installed("webui-aria2"),
-            ariang = ipkg.installed("ariang")
-	      }
-          ```
-        - `luasrc/view/aria2/overview_status.htm`
-          ```
-  				if (data.webui) {
-					links += '<input class="cbi-button mar-10" type="button" value="<%:Open WebUI-Aria2%>" onclick="openWebUI(\'webui-aria2\');" />';
-				}
-				if (data.ariang) {
-					links += '<input class="cbi-button mar-10" type="button" value="<%:Open AriaNg%>" onclick="openWebUI(\'ariang\');" />';
-				}
-          ```
-        - `po/lang/aria2.po`, 中文示例
-          ```
-          msgid "Open AriaNg"
-          msgstr "打开 AriaNg"
-          ```
-
-4. autossh/luci-app-autossh
+3. autossh/luci-app-autossh
     * autossh luci 界面
     * 翻译: en, zh-cn
 
-5. fs/luci-app-nfs
+4. fs/luci-app-nfs
     * 来源 https://github.com/openwrt-1983/2015/trunk/luci-app-nfs, 版本 `1.0`
 
-6. ipv6/radvd
+5. ipv6/radvd
     * 来源 https://github.com/openwrt/packages/pull/1458, 更新到版本 `2.17`
     * rm patches, rm DEPEND kmod-ipv6, add `-std=gnu99`
     * See also: [Setting up an ISATAP router on Linux](http://www.saschahlusiak.de/linux/isatap.htm#router)
 
 6. tunnel/frp
     * frp 主页: https://github.com/fatedier/frp
+    * 来源 https://github.com/openwrt/packages/tree/openwrt-21.02/net/frp
     * `frpc`, `frps`
     * `make package/frp/check FIXUP=1 V=s`
 
 7. vlmcsd/vlmcsd
-    * 来源 https://github.com/mchome/openwrt-vlmcsd, 版本 `svn1111`
-    * Network -> vlmcsd
+    * 来源 https://github.com/mchome/openwrt-vlmcsd, 版本 `svn1112`
 
 8. vlmcsd/luci-app-vlmcsd
     * 来源 https://github.com/mchome/luci-app-vlmcsd, 版本 `1.0.1`
-    * 去掉依赖 dnsmasq, 防止与 dnsmasq-ful 冲突
-      ```
-      sed -i 's/ +dnsmasq//' luci-app-vlmcsd/Makefile
-      ```
     * 更改分组 network -> services
       ```
       sed -i 's/"network"/"services"/g' \

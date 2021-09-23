@@ -59,6 +59,12 @@ endef
 Package/frpc/description = $(Package/frp/description)
 Package/frps/description = $(Package/frp/description)
 
+define Build/Configure
+endef
+
+define Build/Compile
+endef
+
 define Package/frp/install
 	$(INSTALL_DIR) $(1)/usr/bin/
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/$(2) $(1)/usr/bin/

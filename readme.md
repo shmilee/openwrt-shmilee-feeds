@@ -1,15 +1,15 @@
 # OpenWrt shmilee's feeds
 
 * 添加官方源中缺少的包,
-  主要针对版本 openwrt 19.07, 架构 ar71xx, 其他未测试
+  主要针对版本 openwrt 21.02, 架构 ath79, 其他未测试
 * 修改官方源中的部分包, 删减或增加功能, 具体情况看以下每个软件包的介绍
 * 需确保 `SDK/feeds.conf.default` 中包含 `base`, `packages`, `luci`,
   以避免依赖或文件缺失. 比如,
   ```
-  src-git base https://git.openwrt.org/openwrt/openwrt.git;v19.07.8
-  src-git packages https://git.openwrt.org/feed/packages.git^c6ae1c6a0fced32c171e228e3425a9b655585011
-  src-git luci https://git.openwrt.org/project/luci.git^7b931da4779c68f5aef5908286c2ae5283d2dece
-  src-git shmilee https://github.com/shmilee/openwrt-shmilee-feeds.git;for-19.07
+  src-git base https://git.openwrt.org/openwrt/openwrt.git;v21.02.0
+  src-git packages https://git.openwrt.org/feed/packages.git^65057dcbb5de371503c9159de3d45824bec482e0
+  src-git luci https://git.openwrt.org/project/luci.git^3b3c2e5f9f82372df8ff01ac65668be47690dcd5
+  src-git shmilee https://github.com/shmilee/openwrt-shmilee-feeds.git
   ```
 
 # 已包含软件包
@@ -41,6 +41,7 @@
 6. tunnel/frp
     * frp 主页: https://github.com/fatedier/frp
     * 来源 https://github.com/openwrt/packages/tree/openwrt-21.02/net/frp
+    * 下载编译的对应架构的文件。不需要go依赖。
     * `frpc`, `frps`
     * `make package/frp/check FIXUP=1 V=s`
 

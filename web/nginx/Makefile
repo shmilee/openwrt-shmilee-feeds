@@ -59,6 +59,8 @@ PKG_CONFIG_DEPENDS := \
 	CONFIG_NGINX_HTTP_CACHE \
 	CONFIG_NGINX_HTTP_V2 \
 	CONFIG_NGINX_PCRE \
+	CONFIG_NGINX_HTTP_SUBSTITUTIONS_FILTER \
+	CONFIG_NGINX_HTTP_GOOGLE_FILTER \
 	CONFIG_NGINX_NAXSI \
 	CONFIG_NGINX_LUA \
 	CONFIG_NGINX_HTTP_REAL_IP \
@@ -224,6 +226,12 @@ ifneq ($(BUILD_VARIANT),all-module)
   ifneq ($(CONFIG_NGINX_HTTP_UPSTREAM_KEEPALIVE),y)
     ADDITIONAL_MODULES += --without-http_upstream_keepalive_module
   endif
+  ifeq ($(CONFIG_NGINX_HTTP_SUBSTITUTIONS_FILTER),y)
+    ADDITIONAL_MODULES += --add-module=$(PKG_BUILD_DIR)/ngx_http_substitutions_filter_module
+endif
+  ifeq ($(CONFIG_NGINX_HTTP_GOOGLE_FILTER),y)
+    ADDITIONAL_MODULES += --add-module=$(PKG_BUILD_DIR)/ngx_http_google_filter_module
+  endif
   ifeq ($(CONFIG_NGINX_NAXSI),y)
     ADDITIONAL_MODULES += --add-module=$(PKG_BUILD_DIR)/nginx-naxsi/naxsi_src
   endif
@@ -388,6 +396,8 @@ Package/nginx-all-module/prerm = $(Package/nginx-ssl/prerm)
 
 define Build/Prepare
 	$(Build/Prepare/Default)
+	$(if $(CONFIG_NGINX_HTTP_SUBSTITUTIONS_FILTER),$(call Prepare/nginx-subs-filter))
+	$(if $(CONFIG_NGINX_HTTP_GOOGLE_FILTER),$(call Prepare/nginx-google-filter))
 	$(Prepare/nginx-naxsi)
 	$(Prepare/lua-nginx)
 	$(Prepare/nginx-brotli)
@@ -467,6 +477,38 @@ ifeq ($(CONFIG_NGINX_TS_MODULE),y)
   define  Prepare/nginx-ts
 	$(eval $(Download/nginx-ts))
 	xzcat $(DL_DIR)/$(FILE) | tar -C $(PKG_BUILD_DIR) $(TAR_OPTIONS)
+  endef
+endif
+
+
+ifeq ($(CONFIG_NGINX_HTTP_SUBSTITUTIONS_FILTER),y)
+  define Download/nginx-subs-filter
+	VERSION:=bc58cb11844bc42735bbaef7085ea86ace46d05b
+	SUBDIR:=ngx_http_substitutions_filter_module
+	FILE:=ngx_http_substitutions_filter_module-$(PKG_VERSION)-$$(VERSION).tar.gz
+	URL:=https://github.com/yaoweibin/ngx_http_substitutions_filter_module.git
+	PROTO:=git
+  endef
+
+  define  Prepare/nginx-subs-filter
+	$(eval $(call Download,nginx-subs-filter))
+	gzip -dc $(DL_DIR)/$(FILE) | tar -C $(PKG_BUILD_DIR) $(TAR_OPTIONS)
+  endef
+endif
+
+
+ifeq ($(CONFIG_NGINX_HTTP_GOOGLE_FILTER),y)
+  define Download/nginx-google-filter
+	VERSION:=5806afeffe0a773f70f6aa8ef509b9f118ef6c2c
+	SUBDIR:=ngx_http_google_filter_module
+	FILE:=ngx_http_google_filter_module-$(PKG_VERSION)-$$(VERSION).tar.gz
+	URL:=https://github.com/cuber/ngx_http_google_filter_module.git
+	PROTO:=git
+  endef
+
+  define  Prepare/nginx-google-filter
+	$(eval $(call Download,nginx-google-filter))
+	gzip -dc $(DL_DIR)/$(FILE) | tar -C $(PKG_BUILD_DIR) $(TAR_OPTIONS)
   endef
 endif
 

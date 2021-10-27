@@ -57,7 +57,7 @@
       ```
 
 9. web/nginx
-    * 来源 github.com/openwrt/packages.git, 版本 `1.12.2`
+    * 来源 github.com/openwrt/packages.git, 版本 `1.19.6`
     * 考虑到路由器的性能, nginx 只作前端, 将不同请求反向代理到其他机器.
       因此, 开启 `TLS SNI`, 保留 `proxy` 的同时, 尽量去除其他的 module,
       如 auth, ssi, fastcgi, uwsgi, scgi, memcached, lua, NAXSI 等.

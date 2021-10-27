@@ -49,12 +49,12 @@ config NGINX_HTTP_GZIP
 config NGINX_HTTP_SSI
 	bool
 	prompt "Enable HTTP ssi module"
-	default y
+	default n
 
 config NGINX_HTTP_USERID
 	bool
 	prompt "Enable HTTP userid module"
-	default y
+	default n
 
 config NGINX_HTTP_ACCESS
 	bool
@@ -89,7 +89,7 @@ config NGINX_HTTP_MAP
 config NGINX_HTTP_SPLIT_CLIENTS
 	bool
 	prompt "Enable HTTP split clients"
-	default y
+	default n
 
 config NGINX_HTTP_REFERER
 	bool
@@ -110,22 +110,22 @@ config NGINX_HTTP_PROXY
 config NGINX_HTTP_FASTCGI
 	bool
 	prompt "Enable HTTP fastcgi module"
-	default y
+	default n
 
 config NGINX_HTTP_UWSGI
 	bool
 	prompt "Enable HTTP uwsgi module"
-	default y
+	default n
 
 config NGINX_HTTP_SCGI
 	bool
 	prompt "Enable HTTP scgi module"
-	default y
+	default n
 
 config NGINX_HTTP_MEMCACHED
 	bool
 	prompt "Enable HTTP memcached module"
-	default y
+	default n
 
 config NGINX_HTTP_LIMIT_CONN
 	bool
@@ -182,10 +182,20 @@ config NGINX_PCRE
 	prompt "Enable PCRE library usage"
 	default y
 
+config NGINX_HTTP_SUBSTITUTIONS_FILTER
+	bool
+	prompt "Enable substitutions filter module"
+	default y
+
+config NGINX_HTTP_GOOGLE_FILTER
+	bool
+	prompt "Enable google filter(mirror) module"
+	default y
+
 config NGINX_NAXSI
 	bool
 	prompt "Enable NAXSI module"
-	default y
+	default n
 
 config NGINX_LUA
 	bool
@@ -195,7 +205,7 @@ config NGINX_LUA
 config NGINX_HTTP_REAL_IP
 	bool
 	prompt "Enable HTTP real ip module"
-	default n
+	default y
 
 config NGINX_HTTP_SECURE_LINK
 	bool

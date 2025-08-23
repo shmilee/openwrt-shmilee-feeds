@@ -1,14 +1,14 @@
 # OpenWrt shmilee's feeds
 
 * 添加官方源中缺少的包,
-  主要针对版本 openwrt 21.02, 架构 ath79, 其他未测试
+  主要针对版本 openwrt 24.10, 架构 ath79, 其他未测试
 * 修改官方源中的部分包, 删减或增加功能, 具体情况看以下每个软件包的介绍
 * 需确保 `SDK/feeds.conf.default` 中包含 `base`, `packages`, `luci`,
   以避免依赖或文件缺失. 比如,
   ```
-  src-git base https://git.openwrt.org/openwrt/openwrt.git;v21.02.0
-  src-git packages https://git.openwrt.org/feed/packages.git^65057dcbb5de371503c9159de3d45824bec482e0
-  src-git luci https://git.openwrt.org/project/luci.git^3b3c2e5f9f82372df8ff01ac65668be47690dcd5
+  src-git-full base https://git.openwrt.org/openwrt/openwrt.git;openwrt-24.10
+  src-git packages https://git.openwrt.org/feed/packages.git^c7d1a8c1ae976bd0ad94a351d82ee8fbf16a81f0
+  src-git luci https://git.openwrt.org/project/luci.git^d6b13f648339273facc07b173546ace459c1cabe
   src-git shmilee https://github.com/shmilee/openwrt-shmilee-feeds.git
   ```
 
@@ -33,33 +33,13 @@
 4. fs/luci-app-nfs
     * 来源 https://github.com/openwrt-1983/2015/trunk/luci-app-nfs, 版本 `1.0`
 
-5. ipv6/radvd
-    * 来源 https://github.com/openwrt/packages/pull/1458, 更新到版本 `2.17`
-    * rm patches, rm DEPEND kmod-ipv6, add `-std=gnu99`
-    * See also: [Setting up an ISATAP router on Linux](http://www.saschahlusiak.de/linux/isatap.htm#router)
-
-6. tunnel/frp
-    * frp 主页: https://github.com/fatedier/frp
-    * 来源 https://github.com/openwrt/packages/tree/openwrt-21.02/net/frp
-    * 下载编译的对应架构的文件。不需要go依赖。
-    * `frpc`, `frps`
-    * `make package/frp/check FIXUP=1 V=s`
-
-7. vlmcsd/vlmcsd
+5. vlmcsd/vlmcsd
     * 来源 https://github.com/mchome/openwrt-vlmcsd, 版本 `svn1112`
 
-8. vlmcsd/luci-app-vlmcsd
+6. vlmcsd/luci-app-vlmcsd
     * 来源 https://github.com/mchome/luci-app-vlmcsd, 版本 `1.0.1`
     * 更改分组 network -> services
       ```
       sed -i 's/"network"/"services"/g' \
       luci-app-vlmcsd/files/luci/controller/vlmcsd.lua
       ```
-
-9. web/nginx
-    * 来源 github.com/openwrt/packages.git, 版本 `1.19.6`
-    * 考虑到路由器的性能, nginx 只作前端, 将不同请求反向代理到其他机器.
-      因此, 开启 `TLS SNI`, 保留 `proxy` 的同时, 尽量去除其他的 module,
-      如 auth, ssi, fastcgi, uwsgi, scgi, memcached, lua, NAXSI 等.
-    * 保留 `autoindex`, 用于分享数据.
-    * 添加 substitutions && google filter

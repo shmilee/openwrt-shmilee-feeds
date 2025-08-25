@@ -21,7 +21,7 @@ PKG_MAINTAINER:=shmilee <shmilee.zju@gmail.com>
 
 # LuCI specific settings
 LUCI_TITLE:=LuCI Support for vlmcsd
-LUCI_DEPENDS:=+luci-base +vlmcsd
+LUCI_DEPENDS:=+luci-base +luci-compat +vlmcsd
 LUCI_PKGARCH:=all
 
 define Package/$(PKG_NAME)/config

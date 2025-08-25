@@ -22,7 +22,7 @@ PKG_MAINTAINER:=shmilee <shmilee.zju@gmail.com>
 # LuCI specific settings
 LUCI_TITLE:=LuCI Support for autossh
 LUCI_DESCRIPTION:=Provides Luci for autossh
-LUCI_DEPENDS:=+luci-base +autossh
+LUCI_DEPENDS:=+luci-base +luci-compat +autossh
 LUCI_PKGARCH:=all
 
 define Package/$(PKG_NAME)/config

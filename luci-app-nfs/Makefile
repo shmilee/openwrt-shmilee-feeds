@@ -21,7 +21,7 @@ PKG_MAINTAINER:=shmilee <shmilee.zju@gmail.com>
 
 # LuCI specific settings
 LUCI_TITLE:=LuCI Support for NFS
-LUCI_DEPENDS:=+luci-base +nfs-kernel-server
+LUCI_DEPENDS:=+luci-base +luci-compat +nfs-kernel-server
 LUCI_PKGARCH:=all
 
 define Package/$(PKG_NAME)/config

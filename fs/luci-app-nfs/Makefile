@@ -16,18 +16,18 @@ PKG_VERSION:=1.0.0
 # increase on changes of translation files
 PKG_RELEASE:=2
 
-PKG_MAINTAINER:=shmilee
+PKG_LICENSE:=Apache-2.0
+PKG_MAINTAINER:=shmilee <shmilee.zju@gmail.com>
 
 # LuCI specific settings
 LUCI_TITLE:=LuCI Support for NFS
-LUCI_DEPENDS:=+nfs-kernel-server
+LUCI_DEPENDS:=+luci-base +nfs-kernel-server
 LUCI_PKGARCH:=all
 
 define Package/$(PKG_NAME)/config
 # shown in make menuconfig <Help>
 help
 		$(LUCI_TITLE)
-		.
 		Version: $(PKG_VERSION)-$(PKG_RELEASE)
 		$(PKG_MAINTAINER)
 endef

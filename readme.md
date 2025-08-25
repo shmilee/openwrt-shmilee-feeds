@@ -14,20 +14,23 @@
 
 # 已包含软件包
 
-1. autossh/luci-app-autossh
+1. luci-app-autossh
     * autossh luci 界面
     * 翻译: en, zh-cn
 
-2. fs/luci-app-nfs
+2. luci-app-nfs
     * 来源 https://github.com/openwrt-1983/2015/trunk/luci-app-nfs, 版本 `1.0`
 
-3. vlmcsd/vlmcsd
-    * 来源 https://github.com/mchome/openwrt-vlmcsd, 版本 `svn1112`
-
-4. vlmcsd/luci-app-vlmcsd
+3. luci-app-vlmcsd
     * 来源 https://github.com/mchome/luci-app-vlmcsd, 版本 `1.0.1`
     * 更改分组 network -> services
       ```
       sed -i 's/"network"/"services"/g' \
       luci-app-vlmcsd/files/luci/controller/vlmcsd.lua
       ```
+    * repackage: by luci template
+
+4. vlmcsd
+    * 来源 https://github.com/mchome/openwrt-vlmcsd, 版本 `svn1112`
+    * version: update git format
+
